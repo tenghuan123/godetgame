@@ -1,0 +1,19 @@
+extends Node
+
+@export var basic_enemy_scene: PackedScene
+
+const SPAWN_RANGE = 350
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+  $Timer.timeout.connect()
+
+
+func on_timer_timeout():
+    var player = get_tree().get_first_node_in_group("player") as Node2D
+    if player == null:
+        return
+    
+    # 这个TAU就是 2排
+    var random_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
+    var spawn_position = player.global_position + (random_direction * SPAWN_RANGE)
