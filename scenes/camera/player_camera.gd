@@ -9,7 +9,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var direction = acquire_target()
-	global_position = global_position.lerp(direction, 1 - exp( - delta * 100))
+	global_position = global_position.lerp(direction, 1 - exp( - delta * 20))
 
 
 func acquire_target(): 

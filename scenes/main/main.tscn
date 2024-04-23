@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://t300rfrmhk1a"]
+[gd_scene load_steps=6 format=3 uid="uid://t300rfrmhk1a"]
 
 [ext_resource type="PackedScene" uid="uid://3pbik0k8nitu" path="res://scenes/player/player.tscn" id="1_ligjs"]
 [ext_resource type="PackedScene" uid="uid://dj3djrvi2ccyd" path="res://scenes/camera/player_camera.tscn" id="1_mr8tq"]
 [ext_resource type="PackedScene" uid="uid://ujeicxpu5wxl" path="res://scenes/tile_map/tile_map.tscn" id="1_owijl"]
-[ext_resource type="PackedScene" uid="uid://coybqxwrm4b36" path="res://scenes/enemy/basic_enemy.tscn" id="4_g3fed"]
+[ext_resource type="PackedScene" uid="uid://bdetoewpekimc" path="res://scenes/manager/enemy_manager.tscn" id="4_5m1fu"]
+[ext_resource type="PackedScene" uid="uid://bomjf7i13eawf" path="res://scenes/ui/arena_time_ui.tscn" id="5_j1ryb"]
 
 [node name="main" type="Node"]
+
+[node name="ArenaTimeUI" parent="." instance=ExtResource("5_j1ryb")]
 
 [node name="PlayerCarmera" parent="." instance=ExtResource("1_mr8tq")]
 
@@ -16,14 +19,4 @@ layer_0/tile_data = PackedInt32Array(4391031, 393216, 3, 4325495, 0, 4, 4259959,
 position = Vector2(89, 80)
 collision_layer = 0
 
-[node name="BasicEnemy" parent="." instance=ExtResource("4_g3fed")]
-position = Vector2(244, 84)
-collision_layer = 0
-
-[node name="BasicEnemy2" parent="." instance=ExtResource("4_g3fed")]
-position = Vector2(346, 30)
-collision_layer = 0
-
-[node name="BasicEnemy3" parent="." instance=ExtResource("4_g3fed")]
-position = Vector2(114, 190)
-collision_layer = 0
+[node name="EnemyManager" parent="." instance=ExtResource("4_5m1fu")]
