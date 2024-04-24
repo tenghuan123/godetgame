@@ -4,7 +4,7 @@ extends CanvasLayer
 
 @onready var label = $%Label as Label
 
-func _process(delta):
+func _process(_delta):
     if arena_time_manager == null:
         return
     

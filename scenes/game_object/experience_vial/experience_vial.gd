@@ -6,5 +6,6 @@ func _ready():
 
 
 
-func on_area_entered(area: Area2D):
+func on_area_entered(_area: Area2D):
+    GameEvents.emit_experience_vial(1)
     queue_free()

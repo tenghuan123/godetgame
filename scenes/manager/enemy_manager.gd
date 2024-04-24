@@ -6,7 +6,7 @@ const SPAWN_RADIUS = 350
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-  $Timer.timeout.connect(on_timer_timeout)
+    $Timer.timeout.connect(on_timer_timeout)
 
 
 func on_timer_timeout():
