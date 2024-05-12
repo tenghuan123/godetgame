@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://t300rfrmhk1a"]
+[gd_scene load_steps=11 format=3 uid="uid://t300rfrmhk1a"]
 
 [ext_resource type="PackedScene" uid="uid://bo5lqe7slcgx7" path="res://scenes/manager/experience_manager.tscn" id="1_jfj3e"]
 [ext_resource type="PackedScene" uid="uid://3pbik0k8nitu" path="res://scenes/game_object/player/player.tscn" id="1_ligjs"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bomjf7i13eawf" path="res://scenes/ui/arena_time_ui.tscn" id="5_j1ryb"]
 [ext_resource type="PackedScene" uid="uid://chd0meodx1hrq" path="res://scenes/manager/upgrade_manager.tscn" id="6_j477o"]
 [ext_resource type="PackedScene" uid="uid://b2ejgoc0bue24" path="res://scenes/manager/arena_time_manager.tscn" id="6_ksq26"]
+[ext_resource type="PackedScene" uid="uid://dg5l0pk0233gu" path="res://scenes/ui/upgrade_screen.tscn" id="7_k8rlu"]
 [ext_resource type="PackedScene" uid="uid://d3kwivtbilwyc" path="res://scenes/ui/experience_bar.tscn" id="8_emf8j"]
 
 [node name="main" type="Node"]
@@ -26,6 +27,7 @@ experience_manager = NodePath("../ExperienceManager")
 
 [node name="UpgradeManager" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("6_j477o")]
 experience_manager = NodePath("../ExperienceManager")
+upgrade_screen_scene = ExtResource("7_k8rlu")
 
 [node name="PlayerCarmera" parent="." instance=ExtResource("1_mr8tq")]
 
