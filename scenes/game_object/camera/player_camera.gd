@@ -1,5 +1,6 @@
 extends Camera2D
 
+var target_position = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -8,14 +9,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var direction = acquire_target()
-	global_position = global_position.lerp(direction, 1 - exp( - delta * 20))
-
-
-func acquire_target(): 
-	var player_node = get_tree().get_first_node_in_group("player") as Node2D
+	acquire_target()
+	global_position = global_position.lerp(target_position, 1.0 - delta * 20)
 	
-	if player_node != null:
-		return player_node.global_position
-		
-	return Vector2.ZERO
+func acquire_target():
+	var playerNodes = get_tree().get_nodes_in_group("player")
+	if playerNodes.size() > 0:
+		var player = playerNodes[0] as Node2D
+		target_position = player.global_position
