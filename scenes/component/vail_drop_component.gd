@@ -21,5 +21,6 @@ func on_died():
     var spawn_position = (owner as Node2D).global_position
     var vail_instance = vail_sence.instantiate() as Node2D
 
-    owner.get_parent().add_child(vail_instance)
+    var entities_layer = get_tree().get_first_node_in_group("entities_layer") as Node2D
+    entities_layer.add_child(vail_instance)
     vail_instance.global_position = spawn_position

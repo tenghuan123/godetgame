@@ -6,4 +6,4 @@
 script = ExtResource("1_r2ynt")
 id = "sword_rate"
 name = "Sword Quickness"
-description = "Increases sword attack rate by 10%"
+description = "提高10%的剑攻击速度"
