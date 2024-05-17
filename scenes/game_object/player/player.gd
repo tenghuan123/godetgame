@@ -40,7 +40,7 @@ func check_deal_damage():
     if(number_colliding_bodies == 0 || !damage_interval_timer.is_stopped()):
         return
     
-    health_component.damage(10)
+    health_component.damage(1)
     damage_interval_timer.start()
 
 

@@ -28,6 +28,8 @@ experience_manager = NodePath("../ExperienceManager")
 [node name="ArenaTimeManager" parent="." instance=ExtResource("6_ksq26")]
 
 [node name="EnemyManager" parent="." instance=ExtResource("4_5m1fu")]
+arena_time_manager = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":Resource("res://scenes/manager/arena_time_manager.gd"),"end_screen_scene":ExtResource("2_23gjc"))
+
 
 [node name="UpgradeManager" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("6_j477o")]
 experience_manager = NodePath("../ExperienceManager")
