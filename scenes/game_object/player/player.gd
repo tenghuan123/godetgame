@@ -9,6 +9,8 @@ var number_colliding_bodies = 0
 @onready var health_component = $HealthComponent
 @onready var health_bar = $HealthBar
 @onready var abilities = $Abilities
+@onready var animation_player = $AnimationPlayer
+@onready var visuals = $Visuals
 
 
 # Called when the node enters the scene tree for the first time.
@@ -23,11 +25,24 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-    var movement = get_movement_player()
+    var movement = get_movement_player() as Vector2
     var direction = movement.normalized()
     var targer_velocity = direction * MAX_SPEED
+
     velocity = velocity.lerp(targer_velocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
+
     move_and_slide()
+
+    if(movement.x != 0 || movement.y != 0):
+        animation_player.play("walk")
+    else: 
+        animation_player.play("RESET")
+
+    var move_sign = sign(movement.x)
+    if(move_sign == 0):
+        return
+    else:
+        visuals.scale = Vector2(move_sign, 1)
     
 
 func get_movement_player():
