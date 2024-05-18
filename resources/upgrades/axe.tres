@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://bat0b6tqxd1om"]
+
+[ext_resource type="PackedScene" uid="uid://hje71pyxyhk0" path="res://scenes/ability/axe_ability_controller/axe_ability_controller.tscn" id="1_0q1ts"]
+[ext_resource type="Script" path="res://resources/upgrades/ability.gd" id="2_ly0o6"]
+
+[resource]
+script = ExtResource("2_ly0o6")
+ability_controlleer_scene = ExtResource("1_0q1ts")
+id = "axe"
+name = "旋转斧头"
+description = "新增一个定期发射的旋转斧头"

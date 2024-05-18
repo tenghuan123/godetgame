@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://3pbik0k8nitu"]
+[gd_scene load_steps=10 format=3 uid="uid://3pbik0k8nitu"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_8wd1w"]
 [ext_resource type="Texture2D" uid="uid://bwly1lkub7kso" path="res://scenes/game_object/player/player.png" id="1_adew1"]
 [ext_resource type="PackedScene" uid="uid://cn41kypwmd4l5" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_8c24e"]
 [ext_resource type="PackedScene" uid="uid://cbuja1jh6gfcr" path="res://scenes/component/health_component.tscn" id="2_qvcn3"]
-[ext_resource type="PackedScene" uid="uid://hje71pyxyhk0" path="res://scenes/ability/axe_ability_controller/axe_ability_controller.tscn" id="4_h6nwh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oivsu"]
 bg_color = Color(0.247059, 0.14902, 0.192157, 1)
@@ -58,11 +57,9 @@ visible = false
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_em3g4")
 
-[node name="AbilityManager" type="Node" parent="."]
+[node name="Abilities" type="Node" parent="."]
 
-[node name="SwordAbilityController" parent="AbilityManager" instance=ExtResource("2_8c24e")]
-
-[node name="AxeAbilityController" parent="AbilityManager" instance=ExtResource("4_h6nwh")]
+[node name="SwordAbilityController" parent="Abilities" instance=ExtResource("2_8c24e")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.08165e-12, -8)

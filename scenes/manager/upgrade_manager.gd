@@ -7,32 +7,43 @@ extends Node
 var current_upgrades = {}
 
 func _ready():
-    (experience_manager as ExperienceManager).level_up.connect(on_level_up)
-
-
-func on_level_up(current_level: int):
-    var chosen_upgrade = upgrade_pool.pick_random() as AbilityUpgrade
-    if chosen_upgrade == null:
-        return
-    var upgrade_screen_instance = upgrade_screen_scene.instantiate()
-    add_child(upgrade_screen_instance)
-    upgrade_screen_instance.set_ability_upgrades([chosen_upgrade] as Array[AbilityUpgrade])
-    upgrade_screen_instance.upgrade_selected.connect(on_upgrade_selected)
-    
+	(experience_manager as ExperienceManager).level_up.connect(on_level_up)
+	
 
 
 func apply_upgrade(upgrade: AbilityUpgrade):
-    var has_upgrade = current_upgrades.has(upgrade.id)
-    if !has_upgrade:
-        current_upgrades[upgrade.id] = {
-            "resource": upgrade,
-            "quantity": 1
-        }
-    else:
-        current_upgrades[upgrade.id]["quantity"] += 1
+	var has_upgrade = current_upgrades.has(upgrade.id)
+	if !has_upgrade:
+		current_upgrades[upgrade.id] = {
+			"resource": upgrade,
+			"quantity": 1
+		}
+	else:
+		current_upgrades[upgrade.id]["quantity"] += 1
 
-    GameEvents.emit_ability_upgrade_added(upgrade, current_upgrades)
+	GameEvents.emit_ability_upgrade_added(upgrade, current_upgrades)
+
+
+func pick_upgrades():
+	var chosen_upgrades = [] as Array[AbilityUpgrade]
+	var filtered_upgrades = upgrade_pool.duplicate()
+
+	for i in 2:
+		var chosen_upgrade = filtered_upgrades.pick_random() as AbilityUpgrade
+		chosen_upgrades.append(chosen_upgrade)
+		filtered_upgrades = filtered_upgrades.filter(func (upgrade): return upgrade.id != chosen_upgrade.id)
+
+	return chosen_upgrades
+
 
 
 func on_upgrade_selected(upgrade: AbilityUpgrade):
-    apply_upgrade(upgrade)
+	apply_upgrade(upgrade)
+
+
+func on_level_up(current_level: int):
+	var upgrade_screen_instance = upgrade_screen_scene.instantiate()
+	add_child(upgrade_screen_instance)
+	var chosen_upgrades = pick_upgrades()
+	upgrade_screen_instance.set_ability_upgrades(chosen_upgrades)
+	upgrade_screen_instance.upgrade_selected.connect(on_upgrade_selected)
