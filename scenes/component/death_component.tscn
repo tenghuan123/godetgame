@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=3 uid="uid://inxtvkyv3me4"]
+
+[ext_resource type="Texture2D" uid="uid://chsvx6ry1wbxb" path="res://scenes/game_object/enemy/mouse.png" id="1_5iolf"]
+
+[sub_resource type="Animation" id="Animation_lblkh"]
+resource_name = "defalt"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_2o6k2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o4bt8"]
+_data = {
+"RESET": SubResource("Animation_2o6k2"),
+"defalt": SubResource("Animation_lblkh")
+}
+
+[sub_resource type="Curve" id="Curve_hs1e3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.743478, 1), 0.0, 0.0, 0, 0, Vector2(0.960869, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_7vln8"]
+curve = SubResource("Curve_hs1e3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h63ot"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 30.0
+initial_velocity_min = 125.0
+initial_velocity_max = 200.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+gravity = Vector3(0, 400, 0)
+scale_curve = SubResource("CurveTexture_7vln8")
+
+[node name="DeathComponent" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o4bt8")
+}
+autoplay = "defalt"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(5, 0)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_h63ot")
+texture = ExtResource("1_5iolf")
+lifetime = 0.65
+one_shot = true
+fixed_fps = 0
+interpolate = false
