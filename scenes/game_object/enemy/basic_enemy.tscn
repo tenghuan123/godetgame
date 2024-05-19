@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://coybqxwrm4b36"]
+[gd_scene load_steps=13 format=3 uid="uid://coybqxwrm4b36"]
 
 [ext_resource type="Script" path="res://scenes/game_object/enemy/basic_enemy.gd" id="1_4q6cu"]
 [ext_resource type="Texture2D" uid="uid://chsvx6ry1wbxb" path="res://scenes/game_object/enemy/mouse.png" id="1_840sw"]
@@ -6,9 +6,37 @@
 [ext_resource type="PackedScene" uid="uid://7mrjjc0bxrnn" path="res://scenes/component/hurtbox_component.tscn" id="3_072jb"]
 [ext_resource type="PackedScene" uid="uid://dhnyphsadtf80" path="res://scenes/component/vail_drop_component.tscn" id="4_0prvh"]
 [ext_resource type="PackedScene" uid="uid://nvmeb2oaragv" path="res://scenes/game_object/experience_vial/experience_vial.tscn" id="5_iwvjs"]
+[ext_resource type="PackedScene" uid="uid://inxtvkyv3me4" path="res://scenes/component/death_component.tscn" id="7_aa6x8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ngj6p"]
 radius = 12.0
+
+[sub_resource type="Animation" id="Animation_dmwg5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.08165e-12, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_ht853"]
 resource_name = "walk"
@@ -39,33 +67,6 @@ tracks/1/keys = {
 "values": [0.0, 0.174533, 0.0, -0.174533, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_dmwg5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2.08165e-12, -4)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l2n2t"]
 _data = {
 "RESET": SubResource("Animation_dmwg5"),
@@ -82,6 +83,10 @@ motion_mode = 1
 script = ExtResource("1_4q6cu")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_47j1v")]
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("7_aa6x8")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("healthComponet") instance=ExtResource("3_072jb")]
 visible = false
