@@ -5,22 +5,22 @@ extends Node
 @export var vail_sence: PackedScene 
 
 func _ready():
-    healthComponet.died.connect(on_died)
+	healthComponet.died.connect(on_died)
 
 
 func on_died():
-    if randf() > drop_percent:
-        return
+	if randf() > drop_percent:
+		return
 
-    if vail_sence == null:
-        return
-    
-    if not owner is Node2D:
-        return
+	if vail_sence == null:
+		return
+	
+	if not owner is Node2D:
+		return
 
-    var spawn_position = (owner as Node2D).global_position
-    var vail_instance = vail_sence.instantiate() as Node2D
+	var spawn_position = (owner as Node2D).global_position
+	var vail_instance = vail_sence.instantiate() as Node2D
 
-    var entities_layer = get_tree().get_first_node_in_group("entities_layer") as Node2D
-    entities_layer.add_child(vail_instance)
-    vail_instance.global_position = spawn_position
+	var entities_layer = get_tree().get_first_node_in_group("entities_layer") as Node2D
+	entities_layer.add_child(vail_instance)
+	vail_instance.global_position = spawn_position

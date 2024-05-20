@@ -134,7 +134,6 @@ value = 0.5
 show_percentage = false
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 collision_layer = 16
 collision_mask = 0
 
@@ -159,16 +158,13 @@ position = Vector2(2.08165e-12, -8)
 texture = ExtResource("1_adew1")
 
 [node name="CollisionArea2D" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea2D"]
-visible = false
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_nj1x1")
 
 [node name="PlayerCollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(2.08165e-12, -6)
 shape = SubResource("CircleShape2D_dttfh")

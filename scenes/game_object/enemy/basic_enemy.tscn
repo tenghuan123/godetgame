@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://coybqxwrm4b36"]
+[gd_scene load_steps=14 format=3 uid="uid://coybqxwrm4b36"]
 
 [ext_resource type="Script" path="res://scenes/game_object/enemy/basic_enemy.gd" id="1_4q6cu"]
 [ext_resource type="Texture2D" uid="uid://chsvx6ry1wbxb" path="res://scenes/game_object/enemy/mouse.png" id="1_840sw"]
@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://7mrjjc0bxrnn" path="res://scenes/component/hurtbox_component.tscn" id="3_072jb"]
 [ext_resource type="PackedScene" uid="uid://dhnyphsadtf80" path="res://scenes/component/vail_drop_component.tscn" id="4_0prvh"]
 [ext_resource type="PackedScene" uid="uid://nvmeb2oaragv" path="res://scenes/game_object/experience_vial/experience_vial.tscn" id="5_iwvjs"]
-[ext_resource type="PackedScene" uid="uid://inxtvkyv3me4" path="res://scenes/component/death_component.tscn" id="7_aa6x8"]
+[ext_resource type="PackedScene" uid="uid://ds8myamtskjjr" path="res://scenes/component/death_component.tscn" id="7_aa6x8"]
+[ext_resource type="Script" path="res://scenes/component/velocity_component.gd" id="8_h07ni"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ngj6p"]
 radius = 12.0
@@ -83,6 +84,9 @@ motion_mode = 1
 script = ExtResource("1_4q6cu")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_47j1v")]
+
+[node name="VelocityComponent" type="Node" parent="."]
+script = ExtResource("8_h07ni")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("7_aa6x8")]
 health_component = NodePath("../HealthComponent")
