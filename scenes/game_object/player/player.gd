@@ -12,7 +12,6 @@ var number_colliding_bodies = 0
 @onready var animation_player = $AnimationPlayer
 @onready var visuals = $Visuals
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$CollisionArea2D.body_entered.connect(on_body_entered)

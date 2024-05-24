@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ce6lsfj2td8je"]
+
+[ext_resource type="FontFile" uid="uid://dnbanhrc1xqcb" path="res://resources/theme/Rockboxcond12.ttf" id="1_rbdpv"]
+
+[resource]
+default_font = ExtResource("1_rbdpv")

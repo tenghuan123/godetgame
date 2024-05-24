@@ -17,7 +17,7 @@
 [ext_resource type="Resource" uid="uid://di0np0hd3ahij" path="res://resources/upgrades/sword_rate.tres" id="9_6lq1a"]
 [ext_resource type="Resource" path="res://resources/upgrades/axe.tres" id="10_61xtm"]
 
-[node name="main" type="Node"]
+[node name="Node" type="Node"]
 script = ExtResource("1_gjhhw")
 end_screen_scene = ExtResource("2_23gjc")
 

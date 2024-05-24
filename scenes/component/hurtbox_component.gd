@@ -4,6 +4,8 @@ class_name HurtBoxComponent
 
 @export var healthComponet: HealthComponent
 
+var floating_text_scene = preload("res://scenes/ui/floating_text.tscn")
+
 func _ready():
 	area_entered.connect(on_area_entered)
 
@@ -17,3 +19,13 @@ func on_area_entered(other_area: Area2D):
 
 	var hixbox_component = other_area as HitBoxComponent
 	healthComponet.damage(hixbox_component.damage)
+	
+	var floating_text_instances = floating_text_scene.instantiate() as Node2D
+	var foreground_layer =  get_tree().get_first_node_in_group("foreground_layer") as Node2D
+	
+	if(foreground_layer == null):
+		return
+		
+	foreground_layer.add_child(floating_text_instances)
+	floating_text_instances.global_position = global_position + (Vector2.UP * 16)
+	floating_text_instances.start(str(hixbox_component.damage))
