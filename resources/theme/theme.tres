@@ -1,6 +1,16 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ce6lsfj2td8je"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://ce6lsfj2td8je"]
 
+[ext_resource type="Texture2D" uid="uid://b7mq2erbouxo4" path="res://assets/ui/ui.png" id="1_nyiga"]
 [ext_resource type="FontFile" uid="uid://dnbanhrc1xqcb" path="res://resources/theme/Rockboxcond12.ttf" id="1_rbdpv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c1lmu"]
+texture = ExtResource("1_nyiga")
+texture_margin_left = 4.0
+texture_margin_top = 13.0
+texture_margin_right = 4.0
+texture_margin_bottom = 10.0
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 16, 16)
 
 [resource]
 default_font = ExtResource("1_rbdpv")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_c1lmu")
