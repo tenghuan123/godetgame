@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://coybqxwrm4b36"]
+[gd_scene load_steps=17 format=3 uid="uid://coybqxwrm4b36"]
 
 [ext_resource type="Script" path="res://scenes/game_object/enemy/basic_enemy.gd" id="1_4q6cu"]
 [ext_resource type="Texture2D" uid="uid://chsvx6ry1wbxb" path="res://scenes/game_object/enemy/mouse.png" id="1_840sw"]
@@ -6,9 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://7mrjjc0bxrnn" path="res://scenes/component/hurtbox_component.tscn" id="3_072jb"]
 [ext_resource type="PackedScene" uid="uid://dhnyphsadtf80" path="res://scenes/component/vail_drop_component.tscn" id="4_0prvh"]
 [ext_resource type="PackedScene" uid="uid://nvmeb2oaragv" path="res://scenes/game_object/experience_vial/experience_vial.tscn" id="5_iwvjs"]
+[ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_t74ku"]
 [ext_resource type="PackedScene" uid="uid://ds8myamtskjjr" path="res://scenes/component/death_component.tscn" id="7_aa6x8"]
 [ext_resource type="Script" path="res://scenes/component/velocity_component.gd" id="8_h07ni"]
 [ext_resource type="PackedScene" uid="uid://dgyjaq1ijm01u" path="res://scenes/component/hit_flash_component.tscn" id="9_w8b5x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o3yc5"]
+resource_local_to_scene = true
+shader = ExtResource("6_t74ku")
+shader_parameter/lerp_percent = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ngj6p"]
 radius = 12.0
@@ -96,6 +102,7 @@ sprite = NodePath("../Visuals/Sprite2D")
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("9_w8b5x")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
+hit_flash_material = SubResource("ShaderMaterial_o3yc5")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("healthComponet") instance=ExtResource("3_072jb")]
 visible = false

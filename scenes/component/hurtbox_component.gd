@@ -28,4 +28,8 @@ func on_area_entered(other_area: Area2D):
 		
 	foreground_layer.add_child(floating_text_instances)
 	floating_text_instances.global_position = global_position + (Vector2.UP * 16)
-	floating_text_instances.start(str(hixbox_component.damage))
+	
+	var format_string = "%0.1f"
+	if(round(hixbox_component.damage) == hixbox_component.damage):
+		format_string = "%0.0f"
+	floating_text_instances.start(format_string % hixbox_component.damage)
