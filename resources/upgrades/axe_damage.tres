@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_yo5h3")
 id = "axe_damage"
-name = "斧头的伤害提升"
+name = "斧头伤害"
 max_quantity = 0
 description = "提高10%的斧头攻击伤害"

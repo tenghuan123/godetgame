@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_gimsp")
 id = "sword_damage"
-name = "剑的伤害提升"
+name = "剑伤害"
 max_quantity = 0
 description = "提高15%的剑攻击伤害"
