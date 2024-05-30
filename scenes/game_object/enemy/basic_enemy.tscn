@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://coybqxwrm4b36"]
+[gd_scene load_steps=18 format=3 uid="uid://coybqxwrm4b36"]
 
 [ext_resource type="Script" path="res://scenes/game_object/enemy/basic_enemy.gd" id="1_4q6cu"]
 [ext_resource type="Texture2D" uid="uid://chsvx6ry1wbxb" path="res://scenes/game_object/enemy/mouse.png" id="1_840sw"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ds8myamtskjjr" path="res://scenes/component/death_component.tscn" id="7_aa6x8"]
 [ext_resource type="Script" path="res://scenes/component/velocity_component.gd" id="8_h07ni"]
 [ext_resource type="PackedScene" uid="uid://dgyjaq1ijm01u" path="res://scenes/component/hit_flash_component.tscn" id="9_w8b5x"]
+[ext_resource type="PackedScene" uid="uid://dyhtloei6jecx" path="res://scenes/component/hit_random_audio_player_component.tscn" id="12_ikvr6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o3yc5"]
 resource_local_to_scene = true
@@ -105,6 +106,12 @@ health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
 hit_flash_material = SubResource("ShaderMaterial_o3yc5")
 
+[node name="VailDropComponent" parent="." node_paths=PackedStringArray("healthComponet") instance=ExtResource("4_0prvh")]
+healthComponet = NodePath("../HealthComponent")
+vail_sence = ExtResource("5_iwvjs")
+
+[node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("12_ikvr6")]
+
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("healthComponet") instance=ExtResource("3_072jb")]
 visible = false
 healthComponet = NodePath("../HealthComponent")
@@ -113,10 +120,6 @@ healthComponet = NodePath("../HealthComponent")
 visible = false
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_ngj6p")
-
-[node name="VailDropComponent" parent="." node_paths=PackedStringArray("healthComponet") instance=ExtResource("4_0prvh")]
-healthComponet = NodePath("../HealthComponent")
-vail_sence = ExtResource("5_iwvjs")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

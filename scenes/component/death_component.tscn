@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ds8myamtskjjr"]
+[gd_scene load_steps=10 format=3 uid="uid://ds8myamtskjjr"]
 
 [ext_resource type="Texture2D" uid="uid://chsvx6ry1wbxb" path="res://scenes/game_object/enemy/mouse.png" id="1_5iolf"]
 [ext_resource type="Script" path="res://scenes/component/death_component.gd" id="1_p6sdr"]
+[ext_resource type="PackedScene" uid="uid://dyhtloei6jecx" path="res://scenes/component/hit_random_audio_player_component.tscn" id="3_j74v3"]
 
 [sub_resource type="Animation" id="Animation_2o6k2"]
 length = 0.001
@@ -89,3 +90,5 @@ lifetime = 0.5
 one_shot = true
 fixed_fps = 0
 interpolate = false
+
+[node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("3_j74v3")]

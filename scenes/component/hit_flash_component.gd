@@ -5,7 +5,6 @@ extends Node
 @export var sprite: Sprite2D
 @export var hit_flash_material: ShaderMaterial
 
-
 var hit_flash_tween: Tween
 
 # Called when the node enters the scene tree for the first time.
