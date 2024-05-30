@@ -12,26 +12,26 @@ var arena_difficulty = 0
 
 
 func _ready():
-    timer.timeout.connect(on_timer_timeout)
+	timer.timeout.connect(on_timer_timeout)
 
 
 func _process(_delta):
-    var next_time_target = timer.wait_time - ((arena_difficulty + 1) * DIFFICULTY_INTERVAL)
+	var next_time_target = timer.wait_time - ((arena_difficulty + 1) * DIFFICULTY_INTERVAL)
 
-    if(timer.time_left < next_time_target):
-        arena_difficulty +=1
-        arena_difficulty_increased.emit(arena_difficulty)
-    
+	if(timer.time_left < next_time_target):
+		arena_difficulty +=1
+		arena_difficulty_increased.emit(arena_difficulty)
+	
 
 
 func get_time_elapsed(): 
-    if timer == null:
-        return
-    # 这里大概的意思就是总时间减去定时器剩余的时间，就等于过去了多久时间
-    return timer.wait_time - timer.time_left
+	if timer == null:
+		return
+	# 这里大概的意思就是总时间减去定时器剩余的时间，就等于过去了多久时间
+	return timer.wait_time - timer.time_left
 
 
 func on_timer_timeout():
-    var victory_screen_instance = end_screen_scene.instantiate()
+	var victory_screen_instance = end_screen_scene.instantiate()
 
-    add_child(victory_screen_instance)
+	add_child(victory_screen_instance)
