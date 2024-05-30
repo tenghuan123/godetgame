@@ -17,7 +17,7 @@ func _ready():
 	upgrade_pool.add_item(upgrade_axe, 10)
 	upgrade_pool.add_item(upgrade_sword_rate, 10)
 	upgrade_pool.add_item(upgrade_sword_damage, 10)
-	upgrade_pool.add_item(upgrade_player_rate, 1000)
+	upgrade_pool.add_item(upgrade_player_rate, 5)
 	
 	(experience_manager as ExperienceManager).level_up.connect(on_level_up)
 	

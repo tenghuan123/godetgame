@@ -6,5 +6,5 @@
 script = ExtResource("1_8iidi")
 id = "player_rate"
 name = "玩家速度"
-max_quantity = 0
+max_quantity = 2
 description = "提高10%的移动速度"

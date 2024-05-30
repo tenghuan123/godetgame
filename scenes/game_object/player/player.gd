@@ -87,4 +87,5 @@ func on_body_exited(other_body: Node2D):
 
 
 func  on_current_health_change():
+	GameEvents.emit_player_damaged()
 	update_health_display()
