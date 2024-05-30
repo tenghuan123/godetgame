@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dfcoqqohkd1em"]
+[gd_scene load_steps=23 format=3 uid="uid://dfcoqqohkd1em"]
 
 [ext_resource type="Script" path="res://scenes/component/health_component.gd" id="1_c3l55"]
 [ext_resource type="Texture2D" uid="uid://c66dbdge46vxr" path="res://scenes/game_object/enemy/wizard.png" id="1_if3a1"]
@@ -10,7 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://ds8myamtskjjr" path="res://scenes/component/death_component.tscn" id="6_unsh0"]
 [ext_resource type="PackedScene" uid="uid://dgyjaq1ijm01u" path="res://scenes/component/hit_flash_component.tscn" id="9_lfwx6"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="10_hyhqi"]
+[ext_resource type="AudioStream" uid="uid://crbaygom4lui7" path="res://assets/audio/footstep_carpet_000.ogg" id="10_o2r4a"]
+[ext_resource type="AudioStream" uid="uid://cpad0go78dq7i" path="res://assets/audio/footstep_carpet_001.ogg" id="11_2xacf"]
 [ext_resource type="PackedScene" uid="uid://dyhtloei6jecx" path="res://scenes/component/hit_random_audio_player_component.tscn" id="11_l3h54"]
+[ext_resource type="AudioStream" uid="uid://ddh2gcqda5h7w" path="res://assets/audio/footstep_carpet_002.ogg" id="12_vt3u4"]
+[ext_resource type="AudioStream" uid="uid://b04rdmf5dogbe" path="res://assets/audio/footstep_carpet_003.ogg" id="13_gwj8a"]
+[ext_resource type="AudioStream" uid="uid://cm7scc47ycggg" path="res://assets/audio/footstep_carpet_004.ogg" id="14_0ix5p"]
 
 [sub_resource type="Animation" id="Animation_awm60"]
 length = 0.001
@@ -161,6 +166,7 @@ health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("11_l3h54")]
+streams = Array[AudioStream]([ExtResource("10_o2r4a"), ExtResource("11_2xacf"), ExtResource("12_vt3u4"), ExtResource("13_gwj8a"), ExtResource("14_0ix5p")])
 
 [node name="Visuals" type="Node2D" parent="."]
 

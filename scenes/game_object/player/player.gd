@@ -56,6 +56,7 @@ func check_deal_damage():
 	
 	health_component.damage(1)
 	damage_interval_timer.start()
+	$HitRandomAudioPlayerComponent.play_random()
 
 
 func update_health_display():

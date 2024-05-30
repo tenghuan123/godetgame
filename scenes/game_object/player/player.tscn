@@ -1,10 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://3pbik0k8nitu"]
+[gd_scene load_steps=20 format=3 uid="uid://3pbik0k8nitu"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_8wd1w"]
 [ext_resource type="Texture2D" uid="uid://bwly1lkub7kso" path="res://scenes/game_object/player/player.png" id="1_adew1"]
 [ext_resource type="PackedScene" uid="uid://cn41kypwmd4l5" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_8c24e"]
 [ext_resource type="PackedScene" uid="uid://cbuja1jh6gfcr" path="res://scenes/component/health_component.tscn" id="2_qvcn3"]
 [ext_resource type="PackedScene" uid="uid://dmaf1pv80q4mm" path="res://scenes/component/velocity_component.tscn" id="5_dibc4"]
+[ext_resource type="AudioStream" uid="uid://csujxiacxe6hu" path="res://assets/audio/impactMining_000.ogg" id="5_frxd2"]
+[ext_resource type="PackedScene" uid="uid://dyhtloei6jecx" path="res://scenes/component/hit_random_audio_player_component.tscn" id="6_cnf6e"]
+[ext_resource type="AudioStream" uid="uid://n1tlljpkst1e" path="res://assets/audio/impactMining_001.ogg" id="6_unqhk"]
+[ext_resource type="AudioStream" uid="uid://cvkk5247dkx8n" path="res://assets/audio/impactMining_002.ogg" id="7_1byk8"]
+[ext_resource type="AudioStream" uid="uid://sp8dkq5hkx5j" path="res://assets/audio/impactMining_003.ogg" id="8_ya3lc"]
+[ext_resource type="AudioStream" uid="uid://20pnfeepf5jc" path="res://assets/audio/impactMining_004.ogg" id="9_4teom"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oivsu"]
 bg_color = Color(0.247059, 0.14902, 0.192157, 1)
@@ -125,6 +131,9 @@ acceleration = 25.0
 
 [node name="DamageIntervalTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("6_cnf6e")]
+streams = Array[AudioStream]([ExtResource("5_frxd2"), ExtResource("6_unqhk"), ExtResource("7_1byk8"), ExtResource("8_ya3lc"), ExtResource("9_4teom")])
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(32, 6)

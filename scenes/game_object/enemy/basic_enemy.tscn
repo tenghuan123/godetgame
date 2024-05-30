@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://coybqxwrm4b36"]
+[gd_scene load_steps=23 format=3 uid="uid://coybqxwrm4b36"]
 
 [ext_resource type="Script" path="res://scenes/game_object/enemy/basic_enemy.gd" id="1_4q6cu"]
 [ext_resource type="Texture2D" uid="uid://chsvx6ry1wbxb" path="res://scenes/game_object/enemy/mouse.png" id="1_840sw"]
@@ -10,7 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://ds8myamtskjjr" path="res://scenes/component/death_component.tscn" id="7_aa6x8"]
 [ext_resource type="Script" path="res://scenes/component/velocity_component.gd" id="8_h07ni"]
 [ext_resource type="PackedScene" uid="uid://dgyjaq1ijm01u" path="res://scenes/component/hit_flash_component.tscn" id="9_w8b5x"]
+[ext_resource type="AudioStream" uid="uid://cpad0go78dq7i" path="res://assets/audio/footstep_carpet_001.ogg" id="11_apiab"]
+[ext_resource type="AudioStream" uid="uid://crbaygom4lui7" path="res://assets/audio/footstep_carpet_000.ogg" id="11_yajwq"]
+[ext_resource type="AudioStream" uid="uid://ddh2gcqda5h7w" path="res://assets/audio/footstep_carpet_002.ogg" id="12_coxvb"]
 [ext_resource type="PackedScene" uid="uid://dyhtloei6jecx" path="res://scenes/component/hit_random_audio_player_component.tscn" id="12_ikvr6"]
+[ext_resource type="AudioStream" uid="uid://b04rdmf5dogbe" path="res://assets/audio/footstep_carpet_003.ogg" id="13_mpq85"]
+[ext_resource type="AudioStream" uid="uid://cm7scc47ycggg" path="res://assets/audio/footstep_carpet_004.ogg" id="14_chfax"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o3yc5"]
 resource_local_to_scene = true
@@ -111,6 +116,7 @@ healthComponet = NodePath("../HealthComponent")
 vail_sence = ExtResource("5_iwvjs")
 
 [node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("12_ikvr6")]
+streams = Array[AudioStream]([ExtResource("11_yajwq"), ExtResource("11_apiab"), ExtResource("12_coxvb"), ExtResource("13_mpq85"), ExtResource("14_chfax")])
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("healthComponet") instance=ExtResource("3_072jb")]
 visible = false
