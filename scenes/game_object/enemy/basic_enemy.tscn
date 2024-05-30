@@ -85,6 +85,7 @@ _data = {
 radius = 6.0
 
 [node name="BasicEnemy" type="CharacterBody2D" groups=["enemy"]]
+position = Vector2(2.08165e-12, 2.08165e-12)
 collision_layer = 8
 collision_mask = 9
 motion_mode = 1
@@ -124,6 +125,7 @@ libraries = {
 autoplay = "walk"
 
 [node name="Visuals" type="Node2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 position = Vector2(2.08165e-12, -4)

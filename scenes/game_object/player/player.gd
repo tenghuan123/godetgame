@@ -1,19 +1,21 @@
 extends CharacterBody2D
 
-const MAX_SPEED = 125
-const ACCELERATION_SMOOTHING = 25
-
-var number_colliding_bodies = 0
-
 @onready var damage_interval_timer = $DamageIntervalTimer
 @onready var health_component = $HealthComponent
 @onready var health_bar = $HealthBar
 @onready var abilities = $Abilities
 @onready var animation_player = $AnimationPlayer
 @onready var visuals = $Visuals
+@onready var velocity_component = $VelocityComponent
+
+
+var number_colliding_bodies = 0
+var basic_speed = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	basic_speed = velocity_component.max_speed
+	
 	$CollisionArea2D.body_entered.connect(on_body_entered)
 	$CollisionArea2D.body_exited.connect(on_body_exited)
 	damage_interval_timer.timeout.connect(on_damage_interval_timeout)
@@ -26,11 +28,8 @@ func _ready():
 func _process(delta):
 	var movement = get_movement_player() as Vector2
 	var direction = movement.normalized()
-	var targer_velocity = direction * MAX_SPEED
-
-	velocity = velocity.lerp(targer_velocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
-
-	move_and_slide()
+	velocity_component.accelerate_in_direction(direction)
+	velocity_component.move(self)
 
 	if(movement.x != 0 || movement.y != 0):
 		animation_player.play("walk")
@@ -64,12 +63,14 @@ func update_health_display():
 
 
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
-	if(not upgrade is Ability):
-		return
-
-	var upgrade_ability_sence  = upgrade.ability_controlleer_scene as PackedScene
-	var upgrade_ability_sence_instance = upgrade_ability_sence.instantiate()
-	abilities.add_child(upgrade_ability_sence_instance)
+	if(upgrade is Ability):
+		var upgrade_ability_sence  = upgrade.ability_controlleer_scene as PackedScene
+		var upgrade_ability_sence_instance = upgrade_ability_sence.instantiate()
+		abilities.add_child(upgrade_ability_sence_instance)
+	
+	if(upgrade.id == 'player_rate'):
+		velocity_component.max_speed = basic_speed * (1 + current_upgrades["player_rate"]["quantity"] * .1)
+	
 
 
 func on_damage_interval_timeout():
