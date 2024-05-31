@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.2", "GL Compatibility")
 [autoload]
 
 GameEvents="*res://scenes/auto_load/game_events.tscn"
+MusicPlayer="*res://scenes/auto_load/music_player.tscn"
 
 [display]
 

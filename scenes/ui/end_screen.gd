@@ -35,3 +35,12 @@ func on_quit_button_pressed():
 func set_defeat(title: String, description: String):
 	title_label.text = title
 	description_label.text = description
+	play_jingle(true)
+	
+
+
+func play_jingle(defeat: bool = false):
+	if defeat:
+		$DefeatStreamPlayer.play_random()
+	else:
+		$VictoryStreamPlayer.play_random()

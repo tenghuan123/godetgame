@@ -35,3 +35,4 @@ func on_timer_timeout():
 	var victory_screen_instance = end_screen_scene.instantiate()
 
 	add_child(victory_screen_instance)
+	victory_screen_instance.play_jingle()
